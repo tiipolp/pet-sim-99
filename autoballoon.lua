@@ -13,8 +13,11 @@ Client.PlayerPet.CalculateSpeedMultiplier = function(...)
 	return 9e9
 end
 
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 local function hop()
-    queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()')
+    queue_on_teleport([[_G.toggle = true; 
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()]])
  
     local _place = game.PlaceId
     local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
