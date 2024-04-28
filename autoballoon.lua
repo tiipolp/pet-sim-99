@@ -13,7 +13,7 @@ Client.PlayerPet.CalculateSpeedMultiplier = function(...)
 	return 9e9
 end
 
-game:GetService("RunService"):Set3dRenderingEnabled(false)
+if _G.lag then game:GetService("RunService"):Set3dRenderingEnabled(false) end
 
 local function hop()
     queue_on_teleport([[
