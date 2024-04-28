@@ -1,5 +1,4 @@
 -- balloon doesnt look like a real word anymore :(
-_G.toggle = true
 local plr = game.Players.LocalPlayer
 local char = plr.Character
 
