@@ -1,0 +1,58 @@
+-- balloon doesnt look like a real word anymore :(
+
+local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
+ _G.toggle = true
+
+local function hop()
+    local _place = game.PlaceId
+    local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+    function ListServers(cursor)
+    local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+    return Http:JSONDecode(Raw)
+    end
+
+    local Server, Next; repeat
+    local Servers = ListServers(Next)
+    Server = Servers.data[1]
+    Next = Servers.nextPageCursor
+    until Server
+
+    TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+end
+
+if not char:FindFirstChild("WEAPON_" .. plr.Name) then
+    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Slingshot_Toggle"):InvokeServer()
+end
+
+local function killBalloon(id)
+    local args = {
+        [1] = Vector3.new(1,1,1),
+        [2] = 1,
+        [3] = 1,
+        [4] = 1
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Slingshot_FireProjectile"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = id
+    }
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BalloonGifts_BalloonHit"):FireServer(unpack(args))
+end
+
+repeat 
+    wait(2.5)
+    local balloons = workspace.__THINGS.BalloonGifts:GetChildren()
+    local balloon = balloons[math.random(1, #balloons)]
+
+    char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
+    killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
+until #workspace.__THINGS.BalloonGifts:GetChildren() == 0 or _G.toggle == false
+
+hop()
