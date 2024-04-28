@@ -62,11 +62,13 @@ end
 repeat 
     wait(3)
     local balloons = workspace.__THINGS.BalloonGifts:GetChildren()
-    local balloon = balloons[math.random(1, #balloons)]
-
-    if balloon:FindFirstChild("Balloon") then
-     char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
-     killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
+    if #balloons > 1 then
+	local balloon = balloons[math.random(1, #balloons)]
+	
+	if balloon:FindFirstChild("Balloon") then
+	     char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
+	     killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
+	end
     end
 until #workspace.__THINGS.BalloonGifts:GetChildren() == 1 or _G.toggle == false
 
