@@ -18,7 +18,7 @@ if _G.lag then game:GetService("RunService"):Set3dRenderingEnabled(false) else g
 local function hop()
     queue_on_teleport([[
 		repeat wait() until game:IsLoaded()
-		wait(10)
+		wait(20)
 		_G.toggle = true; 
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()]])
  
