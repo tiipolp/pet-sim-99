@@ -48,6 +48,15 @@ local function killBalloon(id)
     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BalloonGifts_BalloonHit"):FireServer(unpack(args))
 end
 
+local function killGift()
+    for i,v in workspace.__THINGS.Breakables:GetChildren() do
+        if v:GetAttribute("BreakableID") and string.find(v:GetAttribute("BreakableID"):lower(), "balloon gift") then
+            for j,k in workspace.__THINGS.Pets:GetChildren() do
+                k:GetChildren()[1].CFrame = char.HumanoidRootPart.CFrame
+        end
+    end
+end
+
 repeat 
     wait(2.5)
     local balloons = workspace.__THINGS.BalloonGifts:GetChildren()
@@ -55,6 +64,7 @@ repeat
 
     if balloon:FindFirstChild("Balloon") then
      char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
+     killGift()
      killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
     end
 until #workspace.__THINGS.BalloonGifts:GetChildren() == 0 or _G.toggle == false
