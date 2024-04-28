@@ -6,7 +6,13 @@ local char = plr.Character
 local Http = game:GetService("HttpService")
 local TPS = game:GetService("TeleportService")
 local Api = "https://games.roblox.com/v1/games/"
- _G.toggle = true
+
+local Client = require(game.ReplicatedStorage.Library:WaitForChild("Client"))
+local CalculateSpeedMultiplier = Client.PlayerPet.CalculateSpeedMultiplier
+
+Client.PlayerPet.CalculateSpeedMultiplier = function(...)
+	return 9e9
+end
 
 local function hop()
     queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()')
@@ -46,15 +52,6 @@ local function killBalloon(id)
     }
 
     game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("BalloonGifts_BalloonHit"):FireServer(unpack(args))
-end
-
-local function killGift()
-    for i,v in workspace.__THINGS.Breakables:GetChildren() do
-        if v:GetAttribute("BreakableID") and string.find(v:GetAttribute("BreakableID"):lower(), "balloon gift") then
-            for j,k in workspace.__THINGS.Pets:GetChildren() do
-                k:GetChildren()[1].CFrame = char.HumanoidRootPart.CFrame
-        end
-    end
 end
 
 repeat 
