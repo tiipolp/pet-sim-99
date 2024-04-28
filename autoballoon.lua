@@ -9,6 +9,8 @@ local Api = "https://games.roblox.com/v1/games/"
  _G.toggle = true
 
 local function hop()
+    queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()')
+ 
     local _place = game.PlaceId
     local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
     function ListServers(cursor)
@@ -51,8 +53,10 @@ repeat
     local balloons = workspace.__THINGS.BalloonGifts:GetChildren()
     local balloon = balloons[math.random(1, #balloons)]
 
-    char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
-    killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
+    if balloon:FindFirstChild("Balloon") then
+     char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
+     killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
+    end
 until #workspace.__THINGS.BalloonGifts:GetChildren() == 0 or _G.toggle == false
 
 hop()
