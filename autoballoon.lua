@@ -1,5 +1,5 @@
 -- balloon doesnt look like a real word anymore :(
-
+_G.toggle = true
 local plr = game.Players.LocalPlayer
 local char = plr.Character
 
@@ -55,15 +55,14 @@ local function killBalloon(id)
 end
 
 repeat 
-    wait(2.5)
+    wait(3)
     local balloons = workspace.__THINGS.BalloonGifts:GetChildren()
     local balloon = balloons[math.random(1, #balloons)]
 
     if balloon:FindFirstChild("Balloon") then
      char.HumanoidRootPart.CFrame = balloon:WaitForChild("Balloon").CFrame
-     killGift()
      killBalloon(balloon.Balloon:GetAttribute("BalloonId"))
     end
-until #workspace.__THINGS.BalloonGifts:GetChildren() == 0 or _G.toggle == false
+until #workspace.__THINGS.BalloonGifts:GetChildren() == 1 or _G.toggle == false
 
 hop()
