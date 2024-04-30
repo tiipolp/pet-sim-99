@@ -4,7 +4,7 @@ local valids = {}
 
 local function hop()
     queue_on_teleport([[
-        repeat wait() until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine') 
+        repeat wait() until workspace.__THINGS:WaitForChild('Instances'):WaitForChild('ClawMachine'):WaitForChild('Teleports')
         loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/main/arcade.lua"))()
         ]])
 
