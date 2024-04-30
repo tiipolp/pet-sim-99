@@ -3,7 +3,10 @@ local pink = "rbxassetid://13987314678"
 local valids = {}
 
 local function hop()
-    queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/main/arcade.lua"))()')
+    queue_on_teleport([[
+        repeat wait() until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine') 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/main/arcade.lua"))()
+        ]])
 
     local _place = game.PlaceId
     local _servers = "https://games.roblox.com/v1/games/".._place.."/servers/Public?sortOrder=Asc&limit=100"
