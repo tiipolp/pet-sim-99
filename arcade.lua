@@ -4,8 +4,6 @@ local valids = {}
 
 local function hop()
     queue_on_teleport([[
-        wait(20)
-        print("thing")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/main/arcade.lua"))()
         ]])
 
@@ -25,11 +23,10 @@ local function hop()
     game:GetService("TeleportService"):TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
 end
 
-repeat wait() until workspace.__THINGS:WaitForChild('Instances'):WaitForChild('ClawMachine'):WaitForChild('Teleports')
-
-firetouchtransmitter(workspace.__THINGS.Instances.ClawMachine.Teleports.Enter, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
-
-repeat wait() until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine')
+repeat 
+    wait(1)
+    firetouchtransmitter(workspace.__THINGS.Instances.ClawMachine.Teleports.Enter, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine')
 
 for i,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.ClawMachine.Items:GetChildren() do
     for j,k in v:GetChildren() do
