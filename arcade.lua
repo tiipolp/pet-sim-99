@@ -32,15 +32,15 @@ until workspace.__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild('ClawMachine
 for i,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.ClawMachine.Items:GetChildren() do
     for j,k in v:GetChildren() do
         if k:IsA("MeshPart") then
-            if not onlypink and not onlyblue then
+            if  onlypink == false and  onlyblue == false then
                 if k.TextureID == blue then
                     valids[k] = "20"
                 elseif k.TextureID == pink then
                     valids[k] = "50"
                 end
-            elseif onlypink and not onlyblue then
+            elseif onlypink == true and onlyblue == false and k.TextureID == pink then
                 valids[k] = "50"
-            elseif onlyblue and not onlypink then
+            elseif onlyblue == true and onlypink == false and k.TextureID == blue then
                 valids[k] = "20"
             end
         end
