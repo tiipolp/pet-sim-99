@@ -26,7 +26,7 @@ end
 repeat 
     wait(1)
     firetouchtransmitter(workspace.__THINGS.Instances.ClawMachine.Teleports.Enter, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
-until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine')
+until workspace.__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild('ClawMachine')
 
 for i,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.ClawMachine.Items:GetChildren() do
     for j,k in v:GetChildren() do
