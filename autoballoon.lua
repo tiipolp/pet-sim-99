@@ -20,7 +20,7 @@ local function hop()
 		repeat wait() until game:IsLoaded()
 		wait(20)
 		_G.toggle = true; 
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Sergi-CS/pet-sim-99-ballon/main/autoballoon.lua"))()]])
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99-ballon/main/autoballoon.lua"))()]])
  
     local _place = game.PlaceId
     local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
