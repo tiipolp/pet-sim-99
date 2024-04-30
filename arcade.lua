@@ -24,7 +24,7 @@ local function hop()
 end
 
 repeat 
-    wait(1)
+    wait(5)
     firetouchtransmitter(workspace.__THINGS.Instances.ClawMachine.Teleports.Enter, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
 until workspace.__THINGS.__INSTANCE_CONTAINER.Active:FindFirstChild('ClawMachine')
 
