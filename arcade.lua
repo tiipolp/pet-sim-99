@@ -47,6 +47,10 @@ for i,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.ClawMachine.Items:GetC
     end
 end
 
+for key, value in pairs(valids) do
+	print(key, value)
+end
+
 if next(valids) == nil then
     hop()
 end
