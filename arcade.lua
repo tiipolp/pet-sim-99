@@ -1,6 +1,9 @@
 local blue = "rbxassetid://13987312142"
 local pink = "rbxassetid://13987314678"
 
+local onlypink = true
+local onlyblue = false
+
 local valids = {}
 
 local function hop()
@@ -52,5 +55,6 @@ for key, value in pairs(valids) do
 end
 
 if next(valids) == nil then
+    wait(5)
     hop()
 end
