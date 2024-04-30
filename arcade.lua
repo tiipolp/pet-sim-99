@@ -24,6 +24,8 @@ local function hop()
     game:GetService("TeleportService"):TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
 end
 
+repeat wait() until workspace.__THINGS:WaitForChild('Instances'):WaitForChild('ClawMachine'):WaitForChild('Teleports')
+
 firetouchtransmitter(workspace.__THINGS.Instances.ClawMachine.Teleports.Enter, game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
 
 repeat wait() until workspace.__THINGS.__INSTANCE_CONTAINER.Active:WaitForChild('ClawMachine')
