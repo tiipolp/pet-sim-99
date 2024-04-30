@@ -42,6 +42,6 @@ for i,v in workspace.__THINGS.__INSTANCE_CONTAINER.Active.ClawMachine.Items:GetC
     end
 end
 
-if next(valids) == nil then
+if next(valids) ~= nil then
     hop()
 end
