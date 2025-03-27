@@ -49,7 +49,7 @@ local function hop()
         _G.maxAttempts = tonumber(readfile("PS99Claw/maxattempts.txt"))
         _G.autoexec = readfile("PS99Claw/autoexec.txt") == "true"
 
-        loadstring(game:HttpGet("https://text.is/BBL_DRIZZY/raw"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/refs/heads/main/autoballoon.lua"))()
         ]])
     end
 
