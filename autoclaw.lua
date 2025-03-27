@@ -7,7 +7,7 @@ repeat wait() until game.Players.LocalPlayer.Character
 _G.onlypink = true
 _G.onlyblue = false
 _G.maxAttempts = 3
-_G.autoexec = false
+_G.autoexec = true
 
 local blue = "rbxassetid://13987312142"
 local pink = "rbxassetid://13987314678"
@@ -50,7 +50,7 @@ local function hop()
         _G.maxAttempts = tonumber(readfile("PS99Claw/maxattempts.txt"))
         _G.autoexec = readfile("PS99Claw/autoexec.txt") == "true"
 
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/refs/heads/main/autoballoon.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tiipolp/pet-sim-99/refs/heads/main/autoclaw.lua"))()
         ]])
     end
 
@@ -71,6 +71,7 @@ local function hop()
     end
 
     if #servers > 0 then
+        wait(3)
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
     else
         warn("No available servers found!")
